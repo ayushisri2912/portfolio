@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 
 const AnimatedCounter = ({ value, start }) => {
@@ -6,19 +7,20 @@ const AnimatedCounter = ({ value, start }) => {
   useEffect(() => {
     if (!start) return;
 
+    const target = parseInt(value, 10);
     let current = 0;
-    const target = parseInt(value);
 
     const interval = setInterval(() => {
-      current += 1;
-
-      if (current >= target) {
-        current = target;
-        clearInterval(interval);
-      }
+      current++;
 
       setCount(current);
+
+      if (current >= target) {
+        clearInterval(interval);
+      }
     }, 20);
+
+ 
 
     return () => clearInterval(interval);
   }, [start, value]);

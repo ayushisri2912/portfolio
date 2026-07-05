@@ -5,7 +5,7 @@ import todo from "../assets/e-com.jpg";
 import apple from "../assets/apple.png";
 // import razorpay from "../assets/razorpay.png";
 import nike from "../assets/nike.png";
-
+import "./CSS/Project.css";
 const projects = [
   {
   image: ecommerce,
@@ -93,6 +93,7 @@ const Projects = () => {
             <img
               src={project.image}
               alt={project.title}
+              loading="lazy"
             />
 
             <div className="project-content">

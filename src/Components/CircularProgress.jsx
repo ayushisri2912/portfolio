@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import AnimatedCounter from "./AnimatedCounter";
 
 const CircularProgress = ({ percent, title, start }) => {
@@ -10,45 +11,50 @@ const CircularProgress = ({ percent, title, start }) => {
 
   const circumference = normalizedRadius * 2 * Math.PI;
 
-  const strokeDashoffset =
-    circumference -
-    (start ? percent : 0) / 100 * circumference;
+  const [offset, setOffset] = useState(circumference);
+
+  useEffect(() => {
+
+    if (start) {
+      setOffset(
+        circumference - (percent / 100) * circumference
+      );
+    } else {
+      setOffset(circumference);
+    }
+
+  }, [start, percent, circumference]);
 
   return (
     <div className="circle-card">
 
-      <svg
-        height={radius * 2}
-        width={radius * 2}
-      >
+      <svg width={120} height={120}>
 
         <circle
           className="bg-circle"
-          strokeWidth={stroke}
+          cx="60"
+          cy="60"
           r={normalizedRadius}
-          cx={radius}
-          cy={radius}
+          strokeWidth={stroke}
         />
 
         <circle
           className="progress-circle"
+          cx="60"
+          cy="60"
+          r={normalizedRadius}
           strokeWidth={stroke}
           strokeDasharray={circumference}
-          strokeDashoffset={strokeDashoffset}
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
+          strokeDashoffset={offset}
         />
 
       </svg>
 
       <div className="circle-text">
-
         <AnimatedCounter
           value={`${percent}%`}
           start={start}
         />
-
       </div>
 
       <h3>{title}</h3>

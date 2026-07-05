@@ -12,6 +12,8 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import { SiExpress, SiMongodb, SiPostman } from "react-icons/si";
+import "./CSS/Skill.css";
+
 
 const frontend = [
   { name: "HTML", icon: <FaHtml5 />, level: "95%" },
@@ -34,29 +36,34 @@ const tools = [
 ];
 
 const Skills = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.3,
-  });
+  // const { ref, inView } = useInView({
+  //   triggerOnce: false,
+  //   threshold: 0.3,
+  // });
+
+const { ref, inView } = useInView({
+  triggerOnce: true,
+  threshold: 0.15,
+});
 
   const professionalSkills = [
-  {
-    title: "Creativity",
-    percent: 90,
-  },
-  {
-    title: "Communication",
-    percent: 85,
-  },
-  {
-    title: "Problem Solving",
-    percent: 80,
-  },
-  {
-    title: "Team Work",
-    percent: 90,
-  },
-];
+    {
+      title: "Creativity",
+      percent: 90,
+    },
+    {
+      title: "Communication",
+      percent: 85,
+    },
+    {
+      title: "Problem Solving",
+      percent: 80,
+    },
+    {
+      title: "Team Work",
+      percent: 90,
+    },
+  ];
 
   return (
     <section
@@ -65,12 +72,12 @@ const Skills = () => {
       id="skills"
     >
 
-       <div className="section-title">
-    <span className="text-gray">What I Know</span>
+      <div className="section-title">
+        <span className="text-gray">What I Know</span>
 
-    <h1>Skills & Technologies</h1>
+        <h1>Skills & Technologies</h1>
 
-    </div>
+      </div>
 
       {/* <span className="text-gray">What I Know</span>
       <h1>My Skills</h1> */}
@@ -120,7 +127,11 @@ const Skills = () => {
               <div className="skill-info">
                 <span className="icon">{skill.icon}</span>
                 <span>{skill.name}</span>
-                <span>{skill.level}</span>
+                {/* <span>{skill.level}</span> */}
+                <AnimatedCounter
+                  value={skill.level}
+                  start={inView}
+                />
               </div>
 
               <div className="progress">
@@ -137,33 +148,33 @@ const Skills = () => {
 
       </div>
 
-{/* professional skill */}
+      {/* professional skill */}
 
       <div className="professional">
 
-<h2>Professional Skills</h2>
+        <h2>Professional Skills</h2>
 
-<div className="circle-container">
+        <div className="circle-container">
 
-{professionalSkills.map((skill,index)=>(
+          {professionalSkills.map((skill, index) => (
 
-<CircularProgress
+            <CircularProgress
 
-key={index}
+              key={index}
 
-title={skill.title}
+              title={skill.title}
 
-percent={skill.percent}
+              percent={skill.percent}
 
-start={inView}
+              start={inView}
 
-/>
+            />
 
-))}
+          ))}
 
-</div>
+        </div>
 
-</div>
+      </div>
 
 
       {/* Tools */}

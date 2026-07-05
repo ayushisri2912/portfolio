@@ -19,7 +19,7 @@ function App() {
         <Loader onEnter={() => setLoading(false)} />
       ) : (
         <>
-          <>
+          
             <Header />
             <Hero />
              <hr className="section-line" />
@@ -36,7 +36,7 @@ function App() {
             
              <Footer />
           </>
-        </>
+        
       )}
     </>
   );

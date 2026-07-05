@@ -11,7 +11,9 @@ const Header = () => {
           PORTFOLIO<span>.</span>
         </div>
 
-        <ul className={menuOpen ? "active" : ""}>
+        <ul className={menuOpen ? "active" : ""}
+         onClick={() => setMenuOpen(false)}  
+        >
           <li>
             <a href="#home" className="active">
               Home

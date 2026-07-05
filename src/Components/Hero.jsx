@@ -3,6 +3,8 @@ import Typed from "typed.js";
 import profile from "../assets/ayushi.jpeg";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
+import "./CSS/Hero.css";
+
 
 const Hero = () => {
   const typedRef = useRef(null);
